@@ -1,16 +1,33 @@
-# This is a sample Python script.
+from abc import ABCMeta, abstractmethod
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+class Animal(metaclass=ABCMeta):
 
+    @abstractmethod
+    def falar(self):
+        pass
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+class Cachorro(Animal):
+    def falar(self):
+        print("Au au!")
 
+class Gato(Animal):
+    def falar(self):
+        print("Miau!")
 
-# Press the green button in the gutter to run the script.
+class Camelo(Animal):
+    def falar(self):
+        print("Quente...!")
+
+#Fabrica
+class Fabrica:
+    def criar_animal_falante(self, tipo):
+        #return eval(tipo)().falar()
+        return eval(tipo)()
+
+#Cliente
 if __name__ == '__main__':
-    print_hi('PyCharm')
+    fab = Fabrica()
+    animal = input("Qual animal você quer que fale? [Cachorro, Gato, Camelo]\n")
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    obj = fab.criar_animal_falante(animal)
+    obj.falar()
