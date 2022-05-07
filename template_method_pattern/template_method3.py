@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
+
 class Viagem(metaclass=ABCMeta):
     @abstractmethod
     def ida(self):
@@ -28,6 +29,7 @@ class Viagem(metaclass=ABCMeta):
         self.dia3()
         self.retorno()
 
+
 class ViagemVeneza(Viagem):
     def ida(self):
         print("Viagem de avião...")
@@ -43,6 +45,7 @@ class ViagemVeneza(Viagem):
 
     def retorno(self):
         print("Viagem de avião...")
+
 
 class ViagemMalvinas(Viagem):
     def ida(self):
@@ -74,6 +77,6 @@ class GeekTravel:
         else:
             print("Opção inválida")
 
+
 agencia = GeekTravel()
 agencia.preparar_viagem()
-
